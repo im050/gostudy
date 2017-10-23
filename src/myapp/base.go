@@ -30,8 +30,8 @@ func main() {
         26,
         "Man",
     }
-    var arr = [5]int{1,2,3,4,5}
-    for i :=0; i<len(arr);i++ {
+    var arr = [5]int{1, 2, 3, 4, 5}
+    for i := 0; i < len(arr); i++ {
         fmt.Println(arr[i])
     }
     //字符串连接
@@ -40,7 +40,7 @@ func main() {
     s := b.String()
     fmt.Println(s)
     //hash map使用
-    fmt.Print(hashMap["One"],hashMap["Two"]);
+    fmt.Print(hashMap["One"], hashMap["Two"]);
     //json使用
     userJson, err := json.Marshal(user)
     if (err == nil) {
@@ -61,7 +61,7 @@ func main() {
     var mean float32
     total = 38
     count = 17
-    mean = float32(total)/float32(count)
+    mean = float32(total) / float32(count)
     fmt.Printf("%d, %d, %.2f", total, count, mean)
 
 }

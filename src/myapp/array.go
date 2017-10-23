@@ -6,9 +6,9 @@ import (
 
 func main() {
     //普通数组
-    var arr = [5]int{1,2,3,4,5}
+    var arr = [5]int{1, 2, 3, 4, 5}
     for key, val := range arr {
-        fmt.Println(key , ":" , val)
+        fmt.Println(key, ":", val)
     }
 
     //指针数组，和C类似
@@ -16,7 +16,7 @@ func main() {
     for key, _ := range arr {
         ptr[key] = &arr[key]
     }
-    for i := 0; i<5; i++ {
+    for i := 0; i < 5; i++ {
         fmt.Printf("%d\r\n", *ptr[i])
     }
 
@@ -28,7 +28,7 @@ func main() {
     var numbers3 []int = numbers[:3]
     var numbers4 []int = numbers[1:2]
     //追加numbers2元素，同时会扩充capacity
-    numbers2 = append(numbers, 2,3,4)
+    numbers2 = append(numbers, 2, 3, 4)
     //拷贝元素numbers到numbers2
     copy(numbers2, numbers)
 

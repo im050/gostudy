@@ -22,7 +22,6 @@ func main() {
     var m = new(Monkey) //new 返回指针
     m.Name = "老猴子"
 
-
     var t = Tiger{Name: "老狮子"} //返回的是struct值类型
 
     //返回指针类型
@@ -52,14 +51,14 @@ func main() {
     eat(m)
     eat(sm)
     //eat(t) //error cannot use t (type Tiger) as type Animal in argument to eat:
-             //Tiger does not implement Animal (eat method has pointer receiver)
+    //Tiger does not implement Animal (eat method has pointer receiver)
 }
 
-func(t *Tiger) eat() {
+func (t *Tiger) eat() {
     fmt.Println(t.Name, "：我吃香蕉")
 }
 
-func(m *Monkey) eat() {
+func (m *Monkey) eat() {
     fmt.Println(m.Name, "：我吃榴莲")
 }
 

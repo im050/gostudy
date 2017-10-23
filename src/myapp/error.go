@@ -8,10 +8,9 @@ import (
 func main() {
     x, err := divide(5, 0)
     if (err != nil) {
-        fmt.Println(x," err:",err)
+        fmt.Println(x, " err:", err)
     }
 }
-
 
 func divide(x int, y int) (int, error) {
     var result int
