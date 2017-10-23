@@ -55,6 +55,15 @@ func main() {
     fmt.Printf("%s, %s\r\n", s1, s2)
     s1, s2 = swapString(s1, s2)
     fmt.Printf("%s, %s\r\n", s1, s2)
+
+    //类型转换
+    var total, count int
+    var mean float32
+    total = 38
+    count = 17
+    mean = float32(total)/float32(count)
+    fmt.Printf("%d, %d, %.2f", total, count, mean)
+
 }
 
 func swapString(a, b string) (string, string) {
