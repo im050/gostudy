@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 type Animal interface {
-    eat() string
+    eat()
 }
 
 type Tiger struct {
@@ -14,22 +14,55 @@ type Monkey struct {
     Name string
 }
 
-func main() {
-    var m = new(Monkey)
-    var t = new(Tiger)
-    m.Name = "老猴子"
-    t.Name = "傻狮子"
-    m.eat()
-    t.eat()
-    //目前不清楚New和这样的方式创建对象有没有区别,2017年10月23日21:17:38
-    var sm = Monkey{Name:"小猴子"}
-    sm.eat()
+type Flower struct {
+    Name string
 }
 
-func(t Tiger) eat() {
+func main() {
+    var m = new(Monkey) //new 返回指针
+    m.Name = "老猴子"
+
+
+    var t = Tiger{Name: "老狮子"} //返回的是struct值类型
+
+    //返回指针类型
+    var sm = &Monkey{Name:"小猴子"}
+
+
+    //必须将sm转换成interface类型
+    if _, ok := interface{}(sm).(Animal); !ok {
+        fmt.Println(m.Name, " not animal")
+    } else {
+        sm.eat()
+    }
+
+    if _, ok := interface{}(m).(Animal); !ok {
+        fmt.Println(m.Name, " not animal")
+    } else {
+        m.eat()
+    }
+
+    //struct类型不属于Animal
+    if _, ok := interface{}(t).(Animal); !ok {
+        fmt.Println(t.Name, " not animal")
+    } else {
+        t.eat()
+    }
+
+    eat(m)
+    eat(sm)
+    //eat(t) //error cannot use t (type Tiger) as type Animal in argument to eat:
+             //Tiger does not implement Animal (eat method has pointer receiver)
+}
+
+func(t *Tiger) eat() {
     fmt.Println(t.Name, "：我吃香蕉")
 }
 
-func(m Monkey) eat() {
+func(m *Monkey) eat() {
     fmt.Println(m.Name, "：我吃榴莲")
+}
+
+func eat(a Animal) {
+    a.eat()
 }
