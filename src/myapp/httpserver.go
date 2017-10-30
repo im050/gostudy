@@ -7,9 +7,13 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/bar", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/bar", barHandler)
+	http.HandleFunc("/foo", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
 	})
-	http.ListenAndServe(":9001", nil);
+	http.ListenAndServe(":9001", nil)
+}
 
+func barHandler(write http.ResponseWriter, request *http.Request) {
+	fmt.Fprintln(write, "hello world");
 }
