@@ -64,6 +64,22 @@ func main() {
     mean = float32(total) / float32(count)
     fmt.Printf("%d, %d, %.2f", total, count, mean)
 
+    var switchVar int = 0;
+    switch switchVar {
+    case 0:
+        fmt.Println("switch ", 0);
+    case 1:
+        fmt.Println("siwtch ", 1);
+    }
+
+    fmt.Println("counting")
+
+    for i := 0; i < 10; i++ {
+        defer fmt.Println(i) //后进先出
+    }
+
+    fmt.Println("done")
+
 }
 
 func swapString(a, b string) (string, string) {
